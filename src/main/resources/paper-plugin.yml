@@ -1,0 +1,4 @@
+name: GalaxyLimbo
+version: '1.0.0'
+main: xyz.lncvrt.galaxylimbo.GalaxyLimbo
+api-version: '1.20'

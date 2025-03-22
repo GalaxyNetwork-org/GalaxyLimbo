@@ -25,6 +25,7 @@ public final class GalaxyLimbo extends JavaPlugin implements Listener {
     @EventHandler
     public void onFoodLevelChangeEvent(FoodLevelChangeEvent event) {
         if (event.getEntity() instanceof Player player) {
+            event.setCancelled(true);
             player.setHealth(player.getMaxHealth());
             player.setFoodLevel(20);
             player.setSaturation(20);
@@ -34,9 +35,14 @@ public final class GalaxyLimbo extends JavaPlugin implements Listener {
     @EventHandler
     public void onEntityDamageEvent(EntityDamageEvent event) {
         if (event.getEntity() instanceof Player player) {
+            event.setCancelled(true);
+            World world = getServer().getWorld("world");
+            player.getInventory().clear();
+            player.setGameMode(GameMode.ADVENTURE);
             player.setHealth(player.getMaxHealth());
             player.setFoodLevel(20);
             player.setSaturation(20);
+            player.teleport(new Location(world, 0.5f, 65, 0.5f, 0, 0));
         }
     }
 
